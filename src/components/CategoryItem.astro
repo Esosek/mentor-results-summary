@@ -1,0 +1,53 @@
+---
+const { score, label, icon, color } = Astro.props;
+---
+
+<li data-color={color}>
+  <img src={icon} alt=`${label} icon` />
+  <h3>{label}</h3>
+  <p class="score">
+    <span>{score}</span> / 100
+  </p>
+</li>
+
+<style>
+  li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    margin-block: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  li[data-color='red'] {
+    background: var(--light-red-10);
+    color: var(--light-red);
+  }
+
+  li[data-color='orange'] {
+    background: var(--orangey-yellow-10);
+    color: var(--orangey-yellow);
+  }
+
+  li[data-color='green'] {
+    background: var(--green-teal-10);
+    color: var(--green-teal);
+  }
+
+  li[data-color='blue'] {
+    background: var(--cobalt-blue-10);
+    color: var(--cobalt-blue);
+  }
+
+  .score {
+    color: var(--cobalt-blue-10);
+    font-weight: bold;
+  }
+
+  .score span {
+    color: black;
+  }
+</style>

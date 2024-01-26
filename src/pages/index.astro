@@ -1,72 +1,50 @@
 ---
+import CategoryItem from '../components/CategoryItem.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
   <div class="results-modal">
-    <div class="results-overview">
-      <h1 class="results-overview__title">Your Result</h1>
-      <div class="results-overview__score">
-        <p class="results-overview__score-value">76</p>
-        <p class="results-overview__score-maximum">of 100</p>
+    <div class="overview">
+      <h1 class="overview__title">Your Result</h1>
+      <div class="overview__score">
+        <p class="overview__score-value">76</p>
+        <p class="overview__score-maximum">of 100</p>
       </div>
-      <div class="results-overview__score-evaluation">
-        <h2 class="results-overview__score-subtitle">Great</h2>
-        <p class="results-overview__score-description">
+      <div class="overview__score-evaluation">
+        <h2 class="overview__score-subtitle">Great</h2>
+        <p class="overview__score-description">
           You scored higher than 65% of the people who have taken these tests.
         </p>
       </div>
     </div>
 
-    <div class="results-summary">
-      <h2 class="results-summary__title">Summary</h2>
-      <ul class="results-summary__category-list">
-        <li class="results-summary__category-list-item" data-color="red">
-          <img
-            class="results-summary__category-icon"
-            src="images/icon-reaction.svg"
-            alt="Reaction icon"
-          />
-          <h3 class="results-summary__category-label">Reaction</h3>
-          <p class="results-summary__category-score">
-            <span class="score-value">80</span> / 100
-          </p>
-        </li>
-        <li class="results-summary__category-list-item" data-color="orange">
-          <img
-            class="results-summary__category-icon"
-            src="images/icon-memory.svg"
-            alt="Memory icon"
-          />
-          <h3 class="results-summary__category-label">Memory</h3>
-          <p class="results-summary__category-score">
-            <span class="score-value">92</span> / 100
-          </p>
-        </li>
-        <li class="results-summary__category-list-item" data-color="green">
-          <img
-            class="results-summary__category-icon"
-            src="images/icon-verbal.svg"
-            alt="Verbal icon"
-          />
-          <h3 class="results-summary__category-label">Verbal</h3>
-          <p class="results-summary__category-score">
-            <span class="score-value">61</span> / 100
-          </p>
-        </li>
-        <li class="results-summary__category-list-item" data-color="blue">
-          <img
-            class="results-summary__category-icon"
-            src="images/icon-visual.svg"
-            alt="Visual icon"
-          />
-          <h3 class="results-summary__category-label">Visual</h3>
-          <p class="results-summary__category-score">
-            <span class="score-value">72</span> / 100
-          </p>
-        </li>
+    <div class="summary">
+      <h2 class="summary__title">Summary</h2>
+      <ul class="summary__category-list">
+        <CategoryItem
+          score="80"
+          label="Reaction"
+          icon="images/icon-reaction.svg"
+          color="red"
+        /><CategoryItem
+          score="92"
+          label="Memory"
+          icon="images/icon-memory.svg"
+          color="orange"
+        /><CategoryItem
+          score="61"
+          label="Verbal"
+          icon="images/icon-verbal.svg"
+          color="green"
+        /><CategoryItem
+          score="72"
+          label="Visual"
+          icon="images/icon-visual.svg"
+          color="blue"
+        />
       </ul>
-      <button class="results-summary__continue-btn">Continue</button>
+      <button class="summary__continue-btn">Continue</button>
     </div>
   </div>
 </Layout>
@@ -100,7 +78,7 @@ import Layout from '../layouts/Layout.astro';
     box-shadow: 5px 5px 20px var(--dark-gray-blue-10);
   }
 
-  .results-overview {
+  .overview {
     background: linear-gradient(
       var(--light-slate-blue),
       var(--light-royal-blue)
@@ -115,13 +93,13 @@ import Layout from '../layouts/Layout.astro';
     border-radius: 0 0 2rem 2rem;
   }
 
-  .results-overview__title {
+  .overview__title {
     color: var(--light-lavender);
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
 
-  .results-overview__score {
+  .overview__score {
     background: linear-gradient(var(--violet-blue), var(--persian-blue));
     border-radius: 50%;
     width: 7.5rem;
@@ -131,81 +109,41 @@ import Layout from '../layouts/Layout.astro';
     justify-content: center;
   }
 
-  .results-overview__score-value {
+  .overview__score-value {
     font-size: 3rem;
     font-weight: bold;
   }
 
-  .results-overview__score-maximum {
+  .overview__score-maximum {
     font-size: 0.8rem;
     color: var(--light-lavender-50);
   }
 
-  .results-overview__score-subtitle {
+  .overview__score-subtitle {
     margin-block: 0.5rem;
   }
 
-  .results-overview__score-description {
+  .overview__score-description {
     font-size: 0.9rem;
     color: var(--light-lavender);
   }
 
-  .results-summary {
+  .summary {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .results-summary__title {
+  .summary__title {
     font-size: 1rem;
   }
 
-  .results-summary__category-list {
+  .summary__category-list {
     list-style: none;
   }
 
-  .results-summary__category-list-item {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem;
-    border-radius: 0.8rem;
-    margin-block: 0.8rem;
-    font-size: 0.8rem;
-  }
-
-  .results-summary__category-list-item[data-color='red'] {
-    background: var(--light-red-10);
-    color: var(--light-red);
-  }
-
-  .results-summary__category-list-item[data-color='orange'] {
-    background: var(--orangey-yellow-10);
-    color: var(--orangey-yellow);
-  }
-
-  .results-summary__category-list-item[data-color='green'] {
-    background: var(--green-teal-10);
-    color: var(--green-teal);
-  }
-
-  .results-summary__category-list-item[data-color='blue'] {
-    background: var(--cobalt-blue-10);
-    color: var(--cobalt-blue);
-  }
-
-  .results-summary__category-score {
-    color: var(--light-lavender);
-    font-weight: bold;
-  }
-
-  .results-summary__category-score span {
-    color: black;
-  }
-
-  .results-summary__continue-btn {
+  .summary__continue-btn {
     color: var(--white);
     background: var(--dark-gray-blue);
     width: 100%;
@@ -218,7 +156,7 @@ import Layout from '../layouts/Layout.astro';
       background-color 150ms;
   }
 
-  .results-summary__continue-btn:hover {
+  .summary__continue-btn:hover {
     cursor: pointer;
     color: var(--dark-gray-blue);
     background-color: transparent;
@@ -232,7 +170,7 @@ import Layout from '../layouts/Layout.astro';
       height: auto;
     }
 
-    .results-overview__score {
+    .overview__score {
       width: 10rem;
       height: 10rem;
     }
